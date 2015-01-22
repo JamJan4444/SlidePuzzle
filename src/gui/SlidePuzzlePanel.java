@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 
-public class ButtonPanel extends JPanel 
+public class SlidePuzzlePanel extends JPanel 
 {
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class ButtonPanel extends JPanel
 	/**
 	 * Konstruktor
 	 */
-		public ButtonPanel() 
+		public SlidePuzzlePanel() 
 		{	
 			bg = new ButtonGroup();
 			

@@ -1,11 +1,11 @@
 package gui;
 import javax.swing.JFrame;
 
-public class SlidePuzzleFrame {
+public class SlidePuzzle {
 
 	public static void main(String[] args) 
 	{
-		ButtonFrame frame = new ButtonFrame();
+		SlidePuzzleFrame frame = new SlidePuzzleFrame();
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
