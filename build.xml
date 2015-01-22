@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SlidePuzzle" default="init">
+
+<property name="src.dir" value="src"></property>
+<property name="build.dir" value="bin"></property>
+<property name="javadoc.dir" value="javadoc"></property>
+<property name="dist.dir" value="distribution"></property>
+
+<property name="javadoc.exe" value="C:\Program Files\Java\jdk1.8.0_25\bin\javadoc.exe"></property>
+
+	<!-- Ordner für den Bytecode erstellen und Kompilieren  -->
+	<target name="compile">
+	
+		<mkdir dir="${build.dir}"></mkdir>
+ 		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${build.dir}" compiler="javac1.7"></javac>
+	
+	</target>
+	
+	<!-- In Jar verpacken  -->
+	<target name="distribute" depends="compile">
+	
+		<mkdir dir="${dist.dir}/lib"></mkdir>
+ 		 <jar jarfile="${dist.dir}/lib/SlidePuzzle.jar"
+ 			basedir="${build.dir}"></jar>
+	
+	</target>
+	
+	<!-- Ordner für das JavaDoc und das JavaDoc erstellen -->
+	<target name="javadoc" depends="distribute">
+		
+		<mkdir dir="${javadoc.dir}"></mkdir>
+ 		<javadoc destdir="${javadoc.dir}" executable="${javadoc.exe}">
+ 			<fileset dir="${src.dir}"></fileset>
+		</javadoc>
+	
+	</target>
+
+	<!-- Init Methode zum Einstieg in das Buildfile -->
+	<target name="init" depends="javadoc">
+ 		<echo>${ant.version}</echo>
+ 		<tstamp></tstamp>
+	</target>
+	
+	<!-- Aufräumen -->
+	<target name="clean">
+ 		<delete dir="${build.dir}"></delete>
+ 		<delete dir="${javadoc.dir}"></delete>
+ 		<delete dir="${dist.dir}"></delete>
+	</target>
+
+</project>

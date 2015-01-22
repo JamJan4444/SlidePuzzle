@@ -1,7 +1,7 @@
 package gui;
 import javax.swing.JFrame;
 
-public class ButtonTest {
+public class SlidePuzzleFrame {
 
 	public static void main(String[] args) 
 	{
