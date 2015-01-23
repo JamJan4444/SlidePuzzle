@@ -21,7 +21,8 @@
 	
 		<mkdir dir="${dist.dir}/lib"></mkdir>
  		 <jar jarfile="${dist.dir}/lib/SlidePuzzle.jar"
- 			basedir="${build.dir}"></jar>
+ 			basedir="${build.dir}">
+ 		 </jar>
 	
 	</target>
 	
