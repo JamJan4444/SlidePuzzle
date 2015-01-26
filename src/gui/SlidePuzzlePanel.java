@@ -15,6 +15,10 @@ public class SlidePuzzlePanel extends JPanel
 	private ImageIcon[] parts = new ImageIcon[16];
 	private JButton[] btn = new JButton[16];
 	
+	/**
+	 * Is set in the lower right corner of the Puzzle.
+	 * If the Puzzle is shuffles this value needs an update
+	 */
 	private int emptyField = 15;
 	
 	public SlidePuzzlePanel() 
@@ -26,6 +30,9 @@ public class SlidePuzzlePanel extends JPanel
 		addButtons();
 	}
 	
+	/**
+	 * Ths Method loads the Pictures from Resources
+	 */
 	private void loadIcons()
 	{	
 		parts[0] = new ImageIcon(getClass().getResource("/scream0.png"));
@@ -45,7 +52,10 @@ public class SlidePuzzlePanel extends JPanel
 		parts[14] = new ImageIcon(getClass().getResource("/scream14.png"));
 		parts[15] = new ImageIcon(getClass().getResource("/scream15.png"));
 	}
-				
+			
+	/**
+	 * The PictureButtons are added to the Window
+	 */
 	private void addButtons()
 	{
 		add(getBtn0());
@@ -360,7 +370,11 @@ public class SlidePuzzlePanel extends JPanel
 			return btn[15];
 	}
 	
-	public void movePart(int index)
+	/**
+	 * 
+	 * @param index the Field Index of the Part that has to swap with the emtyField
+	 */
+ 	public void movePart(int index)
 	{		
 		if((index>parts.length-1)||(index<0))
 			return;
@@ -382,11 +396,19 @@ public class SlidePuzzlePanel extends JPanel
 		
 	}
 	
+	//TODO
 	public boolean isRight()
 	{
 		return false;
 	}
 	
+	/**
+	 * This Method shuffles the different Parts of the puzzle.
+	 * It is using a Random int Function to define the parts who swap with the emty
+	 * Field.
+	 * This Function is necessary because the Puzzle could be un-solveable if the Parts are 
+	 * inserted randomly.
+	 */
     private void shuffle() 
     { 
         int rand; 
