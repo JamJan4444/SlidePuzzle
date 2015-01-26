@@ -43,9 +43,6 @@ public class SlidePuzzlePanel extends JPanel
 		parts[12] = new ImageIcon(getClass().getResource("/scream12.png"));
 		parts[13] = new ImageIcon(getClass().getResource("/scream13.png"));
 		parts[14] = new ImageIcon(getClass().getResource("/scream14.png"));
-		
-		shuffle(parts);
-		
 		parts[15] = new ImageIcon(getClass().getResource("/scream15.png"));
 	}
 				
@@ -70,6 +67,8 @@ public class SlidePuzzlePanel extends JPanel
 		add(getBtn13());
 		add(getBtn14());
 		add(getBtn15());
+		
+		shuffle();
 		
 	}
 	
@@ -363,6 +362,9 @@ public class SlidePuzzlePanel extends JPanel
 	
 	public void movePart(int index)
 	{		
+		if((index>parts.length-1)||(index<0))
+			return;
+		
 		if(((index==4)||(index==8)||(index==12))&&((emptyField==3)||(emptyField==7)||(emptyField==11)))
 			return;
 		
@@ -385,20 +387,33 @@ public class SlidePuzzlePanel extends JPanel
 		return false;
 	}
 	
-    private ImageIcon[] shuffle(ImageIcon[] p) 
+    private void shuffle() 
     { 
-        ImageIcon tmp; 
         int rand; 
         Random r = new Random();
         
-        for (int i = 1; i < p.length-1; i++) 
+        for (int i = 0; i < (parts.length * parts.length); i++) 
         { 
-            rand = r.nextInt(p.length-1); 
-            tmp = p[i]; 
-            p[i] = p[rand]; 
-            p[rand] = tmp; 
+            rand = r.nextInt(4);
+            
+            if(rand == 0)
+            {
+            	movePart(emptyField+1);
+            }
+            else if(rand == 1)
+            {
+            	movePart(emptyField-1);
+            }
+            else if(rand == 2)
+            {
+            	movePart(emptyField-4);
+            }
+            else
+            {
+            	movePart(emptyField+4);
+            }
+
         } 
-        return p; 
     } 
 	
 }
